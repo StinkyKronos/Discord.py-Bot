@@ -1,1 +1,0 @@
-# Discord.py-Bot
