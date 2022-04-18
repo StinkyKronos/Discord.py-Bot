@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import random
 RPS_START = False
 RPS_AUTHOR = None
@@ -17,7 +17,7 @@ class RPS(commands.Cog):
     async def rps(self, ctx):
         global RPS_START, RPS_AUTHOR, channel, msg
         channel = ctx.channel
-        embed = discord.Embed(title="**Rock Paper Scissor**")
+        embed = nextcord.Embed(title="**Rock Paper Scissor**")
         msg = await ctx.send(embed=embed)
         await msg.add_reaction('🪨')
         await msg.add_reaction('📰')
@@ -57,16 +57,16 @@ class RPS(commands.Cog):
             elif human_decision == 'scissor' and bot_decision == 'rock':
                 reply = 'lost'
 
-        embed_win = discord.Embed(title='**Victory**',
+        embed_win = nextcord.Embed(title='**Victory**',
                                   description=f'I chose **{bot_decision}** and {RPS_AUTHOR} chose **{human_decision}**',
                                   color=0x42f557)
         embed_win.set_footer(text=payload.member)
-        embed_lost = discord.Embed(title='**Lost**',
+        embed_lost = nextcord.Embed(title='**Lost**',
                                    description=
                                    f'I chose **{bot_decision}** and {RPS_AUTHOR} chose **{human_decision}**',
                                    color=0xf54242)
         embed_lost.set_footer(text=payload.member)
-        embed_tie = discord.Embed(title='**Tie**',
+        embed_tie = nextcord.Embed(title='**Tie**',
                                   description=
                                   f'I chose **{bot_decision}** and {RPS_AUTHOR} chose **{human_decision}**',
                                   color=0xffcc00)

@@ -1,10 +1,10 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import os
 from dotenv import load_dotenv
 
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.members = True
 
 load_dotenv()

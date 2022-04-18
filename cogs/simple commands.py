@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import random
 
 
@@ -34,10 +34,10 @@ class Simple(commands.Cog):
             await ctx.send(arg)
 
     @commands.command()
-    async def dm(self, ctx, member: discord.Member, *, msg):
-        dm_embed = discord.Embed(title=msg, description=f'DM from {ctx.author}')
+    async def dm(self, ctx, member: nextcord.Member, *, msg):
+        dm_embed = nextcord.Embed(title=msg, description=f'DM from {ctx.author}')
         await member.send(embed=dm_embed)
-        embed = discord.Embed(title=f'Messaged {member}', description=msg)
+        embed = nextcord.Embed(title=f'Messaged {member}', description=msg)
         embed.set_footer(text=f'Requested by {ctx.author}')
         await ctx.send(embed=embed)
         await ctx.message.delete()
@@ -46,7 +46,7 @@ class Simple(commands.Cog):
     @dm.error
     async def dm_error(self, ctx, error):
         if isinstance(error, commands.MemberNotFound):
-            embed = discord.Embed(title='Error',
+            embed = nextcord.Embed(title='Error',
                                   description='You either mentioned a non-existing member or format was wrong',
                                   colour=0xf54242)
             embed.add_field(name='Format', value='!dm @StinkyKronos Hello', inline=False)
@@ -56,9 +56,9 @@ class Simple(commands.Cog):
     async def toss(self, ctx):
         choice = ('head', 'tail')
         bot_decision = random.choice(choice)
-        embed_head = discord.Embed(title='**Head**')
+        embed_head = nextcord.Embed(title='**Head**')
         embed_head.set_image(url='https://i.ibb.co/qWfnH1Y/Head.png')
-        embed_tail = discord.Embed(title='**Tail**')
+        embed_tail = nextcord.Embed(title='**Tail**')
         embed_tail.set_image(url='https://i.ibb.co/whTB4cj/Tail.png')
         if bot_decision == 'head':
             await ctx.send(embed=embed_head)

@@ -1,7 +1,7 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import asyncio
-from discord.ext.commands import MissingPermissions, has_permissions
+from nextcord.ext.commands import MissingPermissions, has_permissions
 
 
 class KickBan(commands.Cog):
@@ -9,9 +9,9 @@ class KickBan(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def kick(self, ctx, member: discord.Member, *, reason=None):
+    async def kick(self, ctx, member: nextcord.Member, *, reason=None):
         await member.kick(reason=reason)
-        kick_embed = discord.Embed(title=f'Kicked from {ctx.guild.name}', description=f'{member.mention} was kicked.',
+        kick_embed = nextcord.Embed(title=f'Kicked from {ctx.guild.name}', description=f'{member.mention} was kicked.',
                                    color=0xf54242)
         kick_embed.add_field(name='Reason', value=reason)
         await ctx.send(embed=kick_embed)
@@ -23,9 +23,9 @@ class KickBan(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member: discord.Member, *, reason=None):
+    async def ban(self, ctx, member: nextcord.Member, *, reason=None):
         await member.ban(reason=reason)
-        ban_embed = discord.Embed(title=f'Banned from {ctx.guild.name}',
+        ban_embed = nextcord.Embed(title=f'Banned from {ctx.guild.name}',
                                   description=f'{member.mention} was banned. <a:alert:861817910875389963>',
                                   color=0xf54242)
         ban_embed.add_field(name='Reason', value=reason)
@@ -40,7 +40,7 @@ class KickBan(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, number=0):
-        delete_embed = discord.Embed(title='Deleted', description=f'Deleted {number} messages')
+        delete_embed = nextcord.Embed(title='Deleted', description=f'Deleted {number} messages')
         if number == 0:
             await ctx.send('Please use the format eg: !clear 10')
 
@@ -56,10 +56,10 @@ class KickBan(commands.Cog):
             await ctx.send("You don't have manage_messages permission")
 
     @commands.command()
-    async def whois(self, ctx, member: discord.Member):
+    async def whois(self, ctx, member: nextcord.Member):
         join_date = member.joined_at.strftime('%A, %B %d, %Y')
-        embed = discord.Embed(title=f'Info of {member}', description=f'Joined on {join_date}')
-        pfp = member.avatar_url
+        embed = nextcord.Embed(title=f'Info of {member}', description=f'Joined on {join_date}')
+        pfp = member.display_avatar
         embed.set_thumbnail(url=pfp)
         embed.add_field(name='Username', value=str(member))
         date = member.created_at.strftime('%A, %B %d, %Y')
@@ -70,7 +70,8 @@ class KickBan(commands.Cog):
             roles.append(role.mention)
         roles = roles[1:]
         roles = ", ".join(roles)
-        embed.add_field(name='Roles', inline=False, value=roles)
+        if roles != '':
+            embed.add_field(name='Roles', inline=False, value=roles)
         await ctx.send(embed=embed)
 
 

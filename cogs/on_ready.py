@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import asyncio
 
 
@@ -12,9 +12,9 @@ class Ready(commands.Cog):
         print("|BOT IS UP AND RUNNING|")
         # while 1:
         #     await self.bot.change_presence(
-        #         activity=discord.Activity(type=discord.ActivityType.watching, name="Yo Momma!"))
+        #         activity=nextcord.Activity(type=nextcord.ActivityType.watching, name="Yo Momma!"))
         #     await asyncio.sleep(5)
-        #     await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!help"))
+        #     await self.bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.listening, name="!help"))
         #     await asyncio.sleep(5)
 
 

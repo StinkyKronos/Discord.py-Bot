@@ -1,4 +1,4 @@
-import discord
+import nextcord
 import nextcord
 from nextcord.ext import commands
 import youtube_dl
@@ -28,7 +28,7 @@ class music(commands.Cog):
             source = await nextcord.FFmpegOpusAudio.from_probe(uri, **ffmpeg_options)
 
             vc.play(source)
-            await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name=songTitle))
+            await self.bot.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.playing, name=songTitle))
 
 
 

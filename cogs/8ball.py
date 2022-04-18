@@ -1,5 +1,5 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import random
 
 answers = ["It is certain",
@@ -34,7 +34,7 @@ class Eight(commands.Cog):
             await ctx.send('Use format **!8ball <question>**')
         else:
             decision = random.choice(answers)
-            embed = discord.Embed(title='__8Ball__')
+            embed = nextcord.Embed(title='__8Ball__')
             embed.add_field(name=f'{question}?', value=decision)
             await ctx.send(embed=embed)
 

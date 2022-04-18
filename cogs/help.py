@@ -1,7 +1,7 @@
 import asyncio
-import discord
-from discord.ext import commands
-from discord.ext.commands import CommandNotFound
+import nextcord
+from nextcord.ext import commands
+from nextcord.ext.commands import CommandNotFound
 
 
 class Help(commands.Cog):
@@ -10,7 +10,7 @@ class Help(commands.Cog):
 
     @commands.command()
     async def help(self, ctx):
-        embed = discord.Embed(title="Help", color=0x00c6ff)
+        embed = nextcord.Embed(title="Help", color=0x00c6ff)
         embed.add_field(name='Commands:', value='''
         - **!rps**
         - **!toss**
@@ -41,7 +41,7 @@ class Help(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, CommandNotFound):
-            embed = discord.Embed(title='Command not Found', description='Use !help to see usable commands',
+            embed = nextcord.Embed(title='Command not Found', description='Use !help to see usable commands',
                                   colour=0xf54242)
             msg = await ctx.send(embed=embed)
             await asyncio.sleep(5)
