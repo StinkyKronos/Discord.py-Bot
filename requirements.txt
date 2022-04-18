@@ -1,3 +1,4 @@
-discord
-discord-components
+nextcord
+nextcord[voice]
 pillow
+youtube_dl
