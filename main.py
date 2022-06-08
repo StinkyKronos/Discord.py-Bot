@@ -2,6 +2,7 @@ import nextcord
 from nextcord.ext import commands
 import os
 from dotenv import load_dotenv
+from time import sleep
 
 
 intents = nextcord.Intents.default()
@@ -20,15 +21,15 @@ for filename in os.listdir('./cogs'):
    
 @bot.command()
 async def reload(ctx):
-    role = 762637497020317726
+    id = 762637497020317726
 
-    if ctx.author.id == role:
+    if ctx.author.id == id:
         print("\n")
         reloadingEmbed = nextcord.Embed(title="Reloading...", color=0xFFFFFF)
 
         msg = await ctx.send(embed=reloadingEmbed)
 
-        for extension in listdir("cogs"):
+        for extension in os.listdir("cogs"):
             if extension.endswith(".py"):
                 bot.reload_extension(f"cogs.{extension[:-3]}")
                 print(f"{extension} was reloaded")
