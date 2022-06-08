@@ -9,7 +9,7 @@ class Ready(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print("|BOT IS UP AND RUNNING|")
+        print(f"Logged in as {self.bot.user}.")
         # while 1:
         #     await self.bot.change_presence(
         #         activity=nextcord.Activity(type=nextcord.ActivityType.watching, name="Yo Momma!"))
