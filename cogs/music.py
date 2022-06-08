@@ -20,7 +20,7 @@ class music(commands.Cog):
 
         with youtube_dl.YoutubeDL(ydl_options) as ydl:
             info = ydl.extract_info(
-                'https://www.youtube.com/watch?v=Y1XKe0vuWfw', download=False)
+                'https://www.youtube.com/watch?v=sD_tctv97hA', download=False)
 
             songTitle = info.get('title', None)
             
