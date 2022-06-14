@@ -12,7 +12,7 @@ load_dotenv()
 token = os.getenv("TOKEN")
 
 # Prefix
-bot = commands.Bot(command_prefix=["`", "slave ", "!! "], intents=intents)
+bot = commands.Bot(command_prefix="`", intents=intents)
 bot.remove_command('help')
 
 for filename in os.listdir('./cogs'):
