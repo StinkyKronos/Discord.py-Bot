@@ -11,13 +11,13 @@ class music(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        channel = self.bot.get_channel(965322209147097148)
+        channel = self.bot.get_channel(965182719397093376)
         vc = await channel.connect()
         ffmpeg_options = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
         ydl_options = {'format': 'bestaudio/best'}
         with youtube_dl.YoutubeDL(ydl_options) as ydl:
             info = ydl.extract_info(
-                'https://www.youtube.com/watch?v=sD_tctv97hA', download=False)
+                'https://www.youtube.com/watch?v=5qap5aO4i9A', download=False)
             songTitle = info.get('title', None)
             uri = info['formats'][0]['url']
             source = await nextcord.FFmpegOpusAudio.from_probe(uri, **ffmpeg_options)
